@@ -4,10 +4,11 @@
 
 terraform {
   backend "local" {}
-  required_version = "1.2.2"
+  required_version = ">=1.4.4"
   required_providers {
     docker = {
-      source = "kreuzwerker/docker"
+      source  = "kreuzwerker/docker"
+      version = ">=3.0.2"
     }
   }
 }
@@ -17,23 +18,29 @@ terraform {
 # -----------------------------------------------------------------------------
 
 # Docker Desktop on Windows
-provider "docker" {
-  host = "npipe:////./pipe/dockerDesktopLinuxEngine"
-}
+# provider "docker" {
+#   host = "npipe:////./pipe/dockerDesktopLinuxEngine"
+# }
 
 # Docker on Unix
-#provider "docker" {
-#  host = "unix:///var/run/docker.sock"
-#}
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+# Docker over SSH
+# provider "docker" {
+#   host = "ssh://user@remote-host:22"
+#   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
+# }
 
 # -----------------------------------------------------------------------------
 # LOCALS
 # -----------------------------------------------------------------------------
 
 locals {
-  elasticsearch_version = "8.2.2"
-  logstash_version      = "8.2.2"
-  kibana_version        = "8.2.2"
+  elasticsearch_version = "8.7.0"
+  logstash_version      = "8.7.0"
+  kibana_version        = "8.7.0"
 }
 
 # -----------------------------------------------------------------------------
