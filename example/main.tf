@@ -38,9 +38,9 @@ provider "docker" {
 # -----------------------------------------------------------------------------
 
 locals {
-  elasticsearch_version = "8.7.0"
-  logstash_version      = "8.7.0"
-  kibana_version        = "8.7.0"
+  elasticsearch_version = "8.6.2"
+  logstash_version      = "8.6.2"
+  kibana_version        = "8.6.2"
 }
 
 # -----------------------------------------------------------------------------
