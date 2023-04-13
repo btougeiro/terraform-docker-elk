@@ -10,7 +10,7 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = ">=2.16.0"
+      version = ">=3.0.2"
     }
   }
 }
@@ -39,7 +39,7 @@ resource "docker_container" "elasticsearch" {
   env = var.elasticsearch_env_vars
 
   restart = var.restart
-  image   = docker_image.elasticsearch.latest
+  image   = docker_image.elasticsearch.image_id
 
   networks_advanced {
     name = docker_network.this.name
@@ -134,7 +134,7 @@ resource "docker_container" "logstash" {
   env = var.logstash_env_vars
 
   restart = var.restart
-  image   = docker_image.logstash.latest
+  image   = docker_image.logstash.image_id
 
   dynamic "ports" {
     for_each = var.logstash_ports
@@ -229,7 +229,7 @@ resource "docker_container" "kibana" {
   env = var.kibana_env_vars
 
   restart = var.restart
-  image   = docker_image.kibana.latest
+  image   = docker_image.kibana.image_id
 
   networks_advanced {
     name = docker_network.this.name

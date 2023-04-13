@@ -1,2 +1,3 @@
 # terraform-docker-elk
-Terraform to setup ELK | ELK on Docker
+
+Terraform to setup ELK on Docker.
